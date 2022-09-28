@@ -1,4 +1,4 @@
-use super::lib::logflare_client::push;
+use super::lib::logflare::push;
 use super::lib::structs::LogBody;
 use warp;
 

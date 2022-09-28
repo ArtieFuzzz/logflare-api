@@ -15,7 +15,7 @@ build-windows:
   RUN rustup target add x86_64-pc-windows-gnu
   COPY --dir src manifest.xml icon.ico build.rs Cargo.lock Cargo.toml ./
   RUN cargo build --target x86_64-pc-windows-gnu --release 
-  SAVE ARTIFACT ./target/x86_64-pc-windows-gnu/release/template.exe template.exe AS LOCAL ./release/
+  SAVE ARTIFACT ./target/x86_64-pc-windows-gnu/release/logflare-backend.exe logflare-backend.exe AS LOCAL ./release/
 
 build-linux:
   FROM +install
@@ -23,4 +23,4 @@ build-linux:
   RUN rustup target add x86_64-unknown-linux-musl
   COPY --dir src build.rs Cargo.lock Cargo.toml ./
   RUN cargo build --release
-  SAVE ARTIFACT ./target/release/template template AS LOCAL ./release/
+  SAVE ARTIFACT ./target/release/logflare-backend logflare-backend AS LOCAL ./release/

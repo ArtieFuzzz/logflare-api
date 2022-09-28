@@ -512,11 +512,10 @@ dependencies = [
 
 [[package]]
 name = "logflare-backend"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "ansi_term",
  "color-eyre",
- "neofiglet",
  "once_cell",
  "reqwest",
  "serde",
@@ -606,12 +605,6 @@ dependencies = [
  "security-framework-sys",
  "tempfile",
 ]
-
-[[package]]
-name = "neofiglet"
-version = "0.1.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0ad83e1c3cc692c78a3b39999c757f2e97de1a9cfef418a681f7965a12a6701a"
 
 [[package]]
 name = "num_cpus"

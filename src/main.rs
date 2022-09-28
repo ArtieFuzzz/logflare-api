@@ -2,7 +2,6 @@ use std::net::SocketAddr;
 
 use ansi_term::Color::Green;
 use color_eyre::Result;
-use neofiglet::FIGfont;
 use once_cell::sync::Lazy;
 use reqwest::Client;
 use tracing::log::warn;
@@ -20,9 +19,25 @@ async fn main() -> Result<()> {
     color_eyre::install()?;
     tracing_subscriber::fmt::init();
 
-    let figlet = FIGfont::standard().unwrap();
-    println!("{}\n", figlet.convert("LogFlare Backend").unwrap());
-    println!("{}\n", Green.paint("Written in Rust"));
+    println!(
+        "{}",
+        r"
+     _                _____ _
+    | |    ___   __ _|  ___| | __ _ _ __ ___
+    | |   / _ \ / _` | |_  | |/ _` | '__/ _ \
+    | |__| (_) | (_| |  _| | | (_| | | |  __/
+    |_____\___/ \__, |_|   |_|\__,_|_|  \___|
+                |___/
+    "
+    );
+
+    println!(
+        "{}\n",
+        Green.paint(format!(
+            "API Interface Written in Rust, V{}",
+            env!("CARGO_PKG_VERSION")
+        ))
+    );
 
     let conf = config::read("./config.yml")?;
     let addr = format!("{}:{}", conf.host, conf.port).parse::<SocketAddr>()?;
