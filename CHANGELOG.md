@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [0.2.2] - 2022-09-28
+## [0.2.2-hotfix] - 2022-09-28
 
 ### Features
 
@@ -14,6 +14,7 @@ All notable changes to this project will be documented in this file.
 
 - 0.1.0
 - 0.2.0
+- 0.2.2
 
 ### Refactor
 
