@@ -1,6 +1,6 @@
 VERSION 0.6
 FROM rust:alpine
-WORKDIR /template
+WORKDIR /logflare-backend
 
 # Install packages and CLI dependencies here
 install:

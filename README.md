@@ -1,13 +1,7 @@
-# Rust Template
+# LogFlare Backend
 
-## TEMPLATE
-
-- Remove this (TEMPLATE) part of the README
-- Update Earthfile (Change `template` to project name)
-- Update workflows/release.yml (Change `template` to project name)
-- Update Cargo.toml (Change `template` to project name)
-- Update icon.ico
+> Written in Rust
 
 ## Description
 
-...
+A simple backend for LogFlare written in Rust.

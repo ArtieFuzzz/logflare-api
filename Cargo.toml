@@ -1,14 +1,24 @@
 [package]
-name = "template"
+name = "logflare-backend"
 version = "0.1.0"
 edition = "2021"
 build = "build.rs"
 
 [package.metadata.winres]
-FileDescription = "template description :^)"
+FileDescription = "A Logflare backend written in Rust"
 
 [dependencies]
+ansi_term = "0.12.1"
 color-eyre = { version = "0.6", default-features = false }
+neofiglet = "0.1.1"
+once_cell = "1.15.0"
+reqwest = { version = "0.11.12", features = ["json"] }
+serde = { version = "1.0.145", features = ["derive"] }
+serde_yaml = "*"
+tokio = { version = "1", features = ["full"] }
+tracing = "0.1.36"
+tracing-subscriber = "0.3.15"
+warp = "0.3.3"
 
 [build-dependencies]
 # winres project
