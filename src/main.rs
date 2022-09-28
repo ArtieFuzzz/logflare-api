@@ -1,10 +1,14 @@
-use std::net::SocketAddr;
 use ansi_term::Color::Green;
 use color_eyre::Result;
 use once_cell::sync::Lazy;
 use reqwest::Client;
+use std::{convert::Infallible, net::SocketAddr};
 use tracing::log::warn;
-use warp::{self, Filter};
+use warp::{
+    self,
+    http::{Response, StatusCode},
+    Filter,
+};
 
 mod config;
 mod server;
@@ -46,7 +50,7 @@ async fn main() -> Result<()> {
         .and(warp::body::json::<LogBody>())
         .and_then(server::routes::report);
 
-    let routes = warp::any().and(report);
+    let routes = warp::any().and(report).recover(handle_rejection);
 
     tokio::spawn(async move {
         tokio::signal::ctrl_c()
@@ -59,4 +63,21 @@ async fn main() -> Result<()> {
     warp::serve(routes).run(addr).await;
 
     Ok(())
+}
+
+async fn handle_rejection(rejection: warp::Rejection) -> Result<impl warp::Reply, Infallible> {
+    let message;
+    let code: StatusCode;
+
+    if rejection.is_not_found() {
+        message = "NOT_FOUND";
+        code = StatusCode::NOT_FOUND;
+    } else {
+        eprintln!("Unhandled rejection: {:?}", rejection);
+
+        message = "INTERNAL_SERVER_ERROR";
+        code = StatusCode::INTERNAL_SERVER_ERROR
+    }
+
+    Ok(Response::builder().status(code).body(message))
 }
