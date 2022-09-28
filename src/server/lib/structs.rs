@@ -3,7 +3,7 @@ use serde::{Deserialize, Serialize};
 #[derive(Debug, Serialize, Deserialize)]
 pub struct LogBody {
   pub message: String,
-  pub metadata: Metadata
+  pub meta: Metadata
 }
 
 /* 

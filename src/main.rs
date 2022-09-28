@@ -1,5 +1,4 @@
 use std::net::SocketAddr;
-
 use ansi_term::Color::Green;
 use color_eyre::Result;
 use once_cell::sync::Lazy;
